@@ -20,7 +20,7 @@ const UrlBar: React.FC<Props> = ({ className }) => {
     <div
       className={clsx(
         className,
-        'h-20 flex-shrink-0 w-full px-4 text-center flex items-center',
+        'h-16 flex-shrink-0 w-full px-4 text-center flex items-center text-sm',
         'bg-black bg-opacity-5 dark:bg-opacity-30 border-t border-gray-400 dark:border-black',
         'cursor-default',
       )}

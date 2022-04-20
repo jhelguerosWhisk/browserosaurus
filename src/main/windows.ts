@@ -78,10 +78,10 @@ export async function createWindows(): Promise<void> {
     },
     center: true,
     height,
-    minHeight: 250,
-    width: 375,
-    maxWidth: 375,
-    minWidth: 375,
+    minHeight: 200,
+    width: 250,
+    maxWidth: 250,
+    minWidth: 250,
     show: false,
     minimizable: false,
     maximizable: false,
@@ -128,38 +128,38 @@ export async function createWindows(): Promise<void> {
 
 export function showPickerWindow(): void {
   if (pickerWindow) {
-    const displayBounds = screen.getDisplayNearestPoint(
-      screen.getCursorScreenPoint(),
-    ).bounds
+    // const displayBounds = screen.getDisplayNearestPoint(
+    //   screen.getCursorScreenPoint(),
+    // ).bounds
 
-    const displayEnd = {
-      x: displayBounds.x + displayBounds.width,
-      y: displayBounds.y + displayBounds.height,
-    }
+    // const displayEnd = {
+    //   x: displayBounds.x + displayBounds.width,
+    //   y: displayBounds.y + displayBounds.height,
+    // }
 
     const mousePoint = screen.getCursorScreenPoint()
 
-    const bWindowBounds = pickerWindow.getBounds()
-
-    const bWindowEdges = {
-      right: mousePoint.x + bWindowBounds.width,
-      bottom: mousePoint.y + bWindowBounds.height,
-    }
+    // const bWindowBounds = pickerWindow.getBounds()
 
     const nudge = {
-      x: 50,
-      y: 10,
+      x: -40,
+      y: -30,
     }
 
+    // const bWindowEdges = {
+    //   right: mousePoint.x - nudge.x + bWindowBounds.width,
+    //   bottom: mousePoint.y - nudge.y + bWindowBounds.height,
+    // }
+
     const inWindowPosition = {
-      x:
-        bWindowEdges.right > displayEnd.x + nudge.x
-          ? displayEnd.x - bWindowBounds.width
-          : mousePoint.x - nudge.x,
-      y:
-        bWindowEdges.bottom > displayEnd.y + nudge.y
-          ? displayEnd.y - bWindowBounds.height
-          : mousePoint.y + nudge.y,
+      x: mousePoint.x + nudge.x,
+      // bWindowEdges.right > displayEnd.x
+      //   ? displayEnd.x - bWindowBounds.width
+      //   : mousePoint.x + nudge.x,
+      y: mousePoint.y + nudge.y,
+      // bWindowEdges.bottom > displayEnd.y
+      //   ? displayEnd.y - bWindowBounds.height
+      //   : mousePoint.y + nudge.y,
     }
 
     pickerWindow.setPosition(inWindowPosition.x, inWindowPosition.y, false)
